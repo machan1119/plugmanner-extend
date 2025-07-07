@@ -25,7 +25,7 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -36,6 +36,9 @@ body {
   }
   .font-h1 {
     @apply font-clash font-semibold text-[48px] leading-[52px] text-black;
+  }
+  .font-h2 {
+    @apply font-clash font-semibold text-[32px] leading-[39px] text-black;
   }
 
 }

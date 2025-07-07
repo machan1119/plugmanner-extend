@@ -405,3 +405,18 @@ export const Tick = (
     />
   </svg>
 );
+
+export const BigQuote = (
+  <svg
+    width="33"
+    height="29"
+    viewBox="0 0 33 29"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0 28.16V14.08C0 5.632 5.632 0 14.08 0V7.68C10.24 7.68 7.68 10.24 7.68 14.08H14.08V28.16H0ZM18.176 28.16V14.08C18.176 5.632 23.808 0 32.256 0V7.68C28.416 7.68 25.856 10.24 25.856 14.08H32.256V28.16H18.176Z"
+      fill="#01C573"
+    />
+  </svg>
+);

@@ -52,7 +52,7 @@ export default function Hero() {
     return;
   }
   return (
-    <section className="w-full bg-gradient-to-br from-[#E8FFF5] to-[#FFFFFF]">
+    <section className="w-full bg-gradient-to-br from-[#E8FFF5] to-[#FFFFFF] mb-[24px]">
       <div className="max-w-[1440px] w-full p-[70px] mx-auto flex items-start justify-between relative">
         <Image
           src="/img/dot_bg.png"
