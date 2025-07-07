@@ -57,7 +57,7 @@ export default function TheComparison() {
             affiliates and get inspired to boost your earnings.
           </p>
         </div>
-        <div className="relative w-full flex flex-col bg-white/0 rounded-[16px] border-[2px] border-white px-[30px] pt-[18px] pb-[55px]">
+        <div className="relative w-full flex flex-col bg-white/50 rounded-[16px] border-[2px] border-white px-[30px] pt-[18px] pb-[55px]">
           <div className="w-full flex z-20">
             <p className="w-[40%]"></p>
             <div className="w-[20%] mx-auto flex justify-center">

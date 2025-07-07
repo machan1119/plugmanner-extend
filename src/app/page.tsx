@@ -1,7 +1,9 @@
 "use client";
+import Footer from "@/components/Footer/Footer";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import OurPricing from "@/components/OurPricing";
+import RealTicket from "@/components/RealTicket";
 import Reviews from "@/components/Reviews";
 import TheComparison from "@/components/TheComparison";
 import TheProcess from "@/components/TheProcess";
@@ -19,6 +21,8 @@ export default function Home() {
       <TopMedia />
       <TheComparison />
       <Reviews />
+      <RealTicket />
+      <Footer />
     </>
   );
 }
