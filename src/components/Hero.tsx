@@ -99,8 +99,8 @@ export default function Hero() {
               {[...new Array(5)].map((_, index) => (
                 <Image
                   src="/img/star.png"
-                  width={23}
-                  height={23}
+                  width={24}
+                  height={24}
                   alt="star"
                   key={index}
                 />

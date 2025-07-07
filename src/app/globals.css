@@ -44,3 +44,7 @@ body {
 }
 /* tailwind customize */
 
+.dot-mask {
+  mask-image: radial-gradient(69.65% 69.65% at 49.33% 5.76%, #000 0%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: radial-gradient(69.65% 69.65% at 49.33% 5.76%, #000 0%, rgba(0,0,0,0) 100%);
+}

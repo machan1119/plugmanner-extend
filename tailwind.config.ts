@@ -26,6 +26,7 @@ export default {
         primary: "#01c573",
         secondary: "#D7F9EB",
         "black-border": "#EBEBEB",
+        "gray-border": "#E0E0E0",
         "light-border": "#F2F2F2",
         text: {
           gray: "#808080",

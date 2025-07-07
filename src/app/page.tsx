@@ -2,6 +2,7 @@
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import OurPricing from "@/components/OurPricing";
+import Reviews from "@/components/Reviews";
 import TheComparison from "@/components/TheComparison";
 import TheProcess from "@/components/TheProcess";
 import TopMedia from "@/components/TopMedia";
@@ -17,6 +18,7 @@ export default function Home() {
       <OurPricing />
       <TopMedia />
       <TheComparison />
+      <Reviews />
     </>
   );
 }
