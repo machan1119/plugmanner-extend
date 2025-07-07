@@ -4,12 +4,19 @@ import {
   Diamond_Cart_bg,
   Golden_Cart_bg,
   Key_Svg,
+  NextArrowButton,
   Platinum_Cart_bg,
+  PrevArrowButton,
   Tick,
   Trend,
 } from "@/libs/SVG";
 import Image from "next/image";
 import { MainButton } from "./Button";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
 
 interface ReachDataType {
   accounts: string;
@@ -41,6 +48,7 @@ interface CartType {
 }
 
 const HeroUserImages = [
+  "/img/hero_user_3.png",
   "/img/hero_user_1.png",
   "/img/hero_user_2.png",
   "/img/hero_user_1.png",
@@ -52,7 +60,7 @@ export default function Hero() {
     return;
   }
   return (
-    <section className="w-full bg-gradient-to-br from-[#E8FFF5] to-[#FFFFFF]">
+    <section className="w-full bg-gradient-to-br from-[#E8FFF5] to-[#FFFFFF] mb-[24px]">
       <div className="max-w-[1440px] w-full p-[70px] mx-auto flex items-start justify-between relative">
         <Image
           src="/img/dot_bg.png"
@@ -63,33 +71,69 @@ export default function Hero() {
         />
         <div className="w-[610px] flex flex-col gap-[25px]">
           <div className="w-full relative">
-            <Image
-              src="/img/hero_1.png"
-              width={610}
-              height={610}
-              alt="hero_img_1"
-              className="rounded-[30px]"
-            />
+            <Swiper
+              navigation={{
+                prevEl: ".custom-swiper-button-prev",
+                nextEl: ".custom-swiper-button-next",
+              }}
+              modules={[Navigation]}
+            >
+              {HeroUserImages.map((item, index) => (
+                <SwiperSlide className="z-10 !rounded-[30px]" key={index}>
+                  <Image
+                    src={item}
+                    width={610}
+                    height={610}
+                    alt="hero_img_1"
+                    className="rounded-[30px]"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
             <ReachCard
               data={ReachData}
-              className="absolute top-[32px] right-[-32px]"
+              className="absolute top-[32px] right-[-32px] z-20"
             />
             <StateCard
               data={StateData}
-              className="absolute bottom-[20px] left-[20px]"
+              className="absolute bottom-[20px] left-[20px] z-20"
             />
+            <button className="custom-swiper-button-next cursor-pointer absolute top-[calc(50%-20px)] right-[15px] z-20">
+              {NextArrowButton}
+            </button>
+            <button className="custom-swiper-button-prev cursor-pointer absolute top-[calc(50%-20px)] left-[15px] z-20">
+              {PrevArrowButton}
+            </button>
           </div>
           <div className="w-full flex items-center gap-[14px] relative overflow-hidden">
-            {HeroUserImages.map((item, index) => (
-              <Image
-                src={item}
-                width={150}
-                height={150}
-                alt="user_image"
-                key={index}
-                className="rounded-[12px]"
-              />
-            ))}
+            <Swiper
+              slidesPerView="auto"
+              spaceBetween={14}
+              loop={true}
+              speed={3000}
+              modules={[FreeMode, Autoplay]}
+              autoplay={{
+                delay: 0,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: false,
+              }}
+              freeMode={{ enabled: true, momentum: false }}
+              allowTouchMove={false}
+              simulateTouch={false}
+              className="mySwiper"
+            >
+              {HeroUserImages.map((item, index) => (
+                <SwiperSlide className="!w-[150px]" key={index}>
+                  <Image
+                    src={item}
+                    width={150}
+                    height={150}
+                    alt="user_image"
+                    className="rounded-[12px]"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
             <div className="w-[40px] h-full absolute right-0 bg-gradient-to-l from-white to-white/0 z-20" />
           </div>
         </div>
@@ -99,8 +143,8 @@ export default function Hero() {
               {[...new Array(5)].map((_, index) => (
                 <Image
                   src="/img/star.png"
-                  width={23}
-                  height={23}
+                  width={24}
+                  height={24}
                   alt="star"
                   key={index}
                 />

@@ -4,8 +4,8 @@ export function MainButton({
   handleClick,
 }: {
   title: string;
-  className: string;
-  handleClick: () => void;
+  className?: string;
+  handleClick?: () => void;
 }) {
   return (
     <button

@@ -25,7 +25,7 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -37,7 +37,56 @@ body {
   .font-h1 {
     @apply font-clash font-semibold text-[48px] leading-[52px] text-black;
   }
+  .font-h2 {
+    @apply font-clash font-semibold text-[32px] leading-[39px] text-black;
+  }
 
 }
 /* tailwind customize */
 
+.dot-mask {
+  mask-image: radial-gradient(69.65% 69.65% at 49.33% 5.76%, #000 0%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: radial-gradient(69.65% 69.65% at 49.33% 5.76%, #000 0%, rgba(0,0,0,0) 100%);
+}
+
+/* Swiper */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background: #FFF;
+  border-radius: 12px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* .custom-swiper-button-prev {
+  width: 41px;
+  height: 41px;
+  left: 47px;
+  top: calc(50% - 41px/2 - 46px);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 41px;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
+.custom-swiper-button-next {
+  width: 41px;
+  height: 41px;
+  left: 590px;
+  top: calc(50% - 41px/2 - 46px);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 41px;
+} */
+/* Swiper */

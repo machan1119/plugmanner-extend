@@ -24,23 +24,26 @@ export default {
       },
       colors: {
         primary: "#01c573",
+        secondary: "#D7F9EB",
         "black-border": "#EBEBEB",
+        "gray-border": "#E0E0E0",
+        "light-border": "#F2F2F2",
         text: {
+          gray: "#808080",
           dark: "#363636",
           primary: "#000000",
           secondary: "#666666",
           light: "#999999",
         },
+        background: {
+          light: "#F5F5F5",
+          dark: "#F6F6F6",
+        },
         "black-dark": "#c7c7c7",
         "black-medium": "rgb(235,235,235)",
         "black-normal": "rgb(226,226,226)",
         "black-steel": "#b6b6cf",
-        secondary: "rgb(1,118,69)",
         accent: "#01a55e",
-        background: {
-          light: "#f6f6f6",
-          dark: "#c7c7c7",
-        },
       },
       // gridTemplateColumns: {
       //   "auto-2": "repeat(2, minmax(0, auto))",
