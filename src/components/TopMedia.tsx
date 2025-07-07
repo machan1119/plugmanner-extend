@@ -21,6 +21,13 @@ export default function TopMedia() {
             alt="instagram_3D"
             className="z-20"
           />
+          <Image
+            src="/img/golden_light.png"
+            width={570}
+            height={175}
+            alt="golden_light"
+            className="absolute right-0"
+          />
           <div className="absolute left-0 w-[205px] h-[140px] rotate-[-15.52deg] bg-[#FFF080] opacity-[26%] blur-xl z-10" />
           <div className="flex flex-col gap-4 w-[50%]">
             <p className="font-clash font-semibold text-[32px] leading-[31px] bg-gradient-to-r from-[#F09819] to-[#EDDE5D] text-transparent bg-clip-text inline-block">

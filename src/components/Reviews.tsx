@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MainButton } from "./Button";
 
 interface ReviewItemProps {
@@ -97,6 +97,12 @@ const ReviewsData: ReviewItemProps[] = [
 
 export default function Reviews() {
   const [count, setCount] = useState(6);
+  const [flag, setFlag] = useState(false);
+  const maxLength = ReviewsData.length;
+  useEffect(() => {
+    setFlag(count >= maxLength);
+  }, [count, maxLength]);
+
   return (
     <section className="w-full bg-background-dark">
       <div className="max-w-[1440px] relative w-full px-[75px] pt-[56px] pb-[48px] mx-auto flex flex-col">
@@ -138,9 +144,14 @@ export default function Reviews() {
           ))}
         </div>
         <MainButton
-          title="Read more"
-          className="w-max self-center"
+          title="Read More"
+          className={`w-max self-center ${flag && "hidden"}`}
           handleClick={() => setCount(count + 6)}
+        />
+        <MainButton
+          title="Read Less"
+          className={`w-max self-center ${!flag && "hidden"}`}
+          handleClick={() => setCount(6)}
         />
       </div>
     </section>

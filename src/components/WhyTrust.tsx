@@ -1,5 +1,9 @@
 import { BigQuote } from "@/libs/SVG";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import { FreeMode, Autoplay } from "swiper/modules";
 
 interface ReviewCardProps {
   imgURL: string;
@@ -27,36 +31,97 @@ export default function WhyTrust() {
           </p>
         </div>
         <div className="flex mb-5">
-          <ReviewCard
-            imgURL="/img/review_img_1.png"
-            title="No Shadownban after 3 months!"
-            description="It’s been over 3 months and I haven’t had any shadowban issues since using this. My reach is steady, engagement’s up, and I’m finally growing without random drops."
-            userName="Sarah M."
-            userType="Fashion Blogger"
-          />
-          <ReviewCard
-            imgURL="/img/review_img_2.png"
-            title="Didn't even need my password. So much safer than other sites"
-            description="dn’t even need to share my password, which instantly felt way safer than other services. Everything just worked without risking my account."
-            userName="Mike D."
-            userType="Musician"
-          />
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={20}
+            loop={true}
+            speed={15000}
+            modules={[FreeMode, Autoplay]}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+            }}
+            freeMode={{ enabled: true, momentum: false }}
+            allowTouchMove={false}
+            simulateTouch={false}
+            className="mySwiper"
+          >
+            <SwiperSlide className="!w-[640px]">
+              <ReviewCard
+                imgURL="/img/review_img_1.png"
+                title="No Shadownban after 3 months!"
+                description="It’s been over 3 months and I haven’t had any shadowban issues since using this. My reach is steady, engagement’s up, and I’m finally growing without random drops."
+                userName="Sarah M."
+                userType="Fashion Blogger"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="!w-[640px]">
+              <ReviewCard
+                imgURL="/img/review_img_2.png"
+                title="Didn't even need my password. So much safer than other sites"
+                description="dn’t even need to share my password, which instantly felt way safer than other services. Everything just worked without risking my account."
+                userName="Mike D."
+                userType="Musician"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="!w-[640px]">
+              <ReviewCard
+                imgURL="/img/review_img_1.png"
+                title="No Shadownban after 3 months!"
+                description="It’s been over 3 months and I haven’t had any shadowban issues since using this. My reach is steady, engagement’s up, and I’m finally growing without random drops."
+                userName="Sarah M."
+                userType="Fashion Blogger"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
         <div className="flex mb-5">
-          <ReviewCard
-            imgURL="/img/review_img_1.png"
-            title="No Shadownban after 3 months!"
-            description="It’s been over 3 months and I haven’t had any shadowban issues since using this. My reach is steady, engagement’s up, and I’m finally growing without random drops."
-            userName="Sarah M."
-            userType="Fashion Blogger"
-          />
-          <ReviewCard
-            imgURL="/img/review_img_2.png"
-            title="Didn't even need my password. So much safer than other sites"
-            description="dn’t even need to share my password, which instantly felt way safer than other services. Everything just worked without risking my account."
-            userName="Mike D."
-            userType="Musician"
-          />
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={20}
+            loop={true}
+            speed={10000}
+            modules={[FreeMode, Autoplay]}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: false,
+              reverseDirection: true,
+            }}
+            freeMode={{ enabled: true, momentum: false }}
+            allowTouchMove={false}
+            simulateTouch={false}
+            className="mySwiper"
+          >
+            <SwiperSlide className="!w-[640px]">
+              <ReviewCard
+                imgURL="/img/review_img_1.png"
+                title="No Shadownban after 3 months!"
+                description="It’s been over 3 months and I haven’t had any shadowban issues since using this. My reach is steady, engagement’s up, and I’m finally growing without random drops."
+                userName="Sarah M."
+                userType="Fashion Blogger"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="!w-[640px]">
+              <ReviewCard
+                imgURL="/img/review_img_2.png"
+                title="Didn't even need my password. So much safer than other sites"
+                description="dn’t even need to share my password, which instantly felt way safer than other services. Everything just worked without risking my account."
+                userName="Mike D."
+                userType="Musician"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="!w-[640px]">
+              <ReviewCard
+                imgURL="/img/review_img_1.png"
+                title="No Shadownban after 3 months!"
+                description="It’s been over 3 months and I haven’t had any shadowban issues since using this. My reach is steady, engagement’s up, and I’m finally growing without random drops."
+                userName="Sarah M."
+                userType="Fashion Blogger"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
     </section>
@@ -71,7 +136,7 @@ function ReviewCard({
   userType,
 }: ReviewCardProps) {
   return (
-    <div className="bg-background-light w-[640px] h-[340px] rounded-[16px] border-[2px] border-white flex gap-4 p-4 ml-5 shadow-xl">
+    <div className="bg-background-light w-[640px] h-[340px] rounded-[16px] border-[2px] border-white flex gap-4 p-4 shadow-xl">
       <Image src={imgURL} width={250} height={305} alt="review_img" />
       <div className="w-full flex flex-col justify-between">
         <div className="flex flex-col gap-6">
@@ -85,11 +150,11 @@ function ReviewCard({
             </p>
           </div>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center w-full">
           <p className="font-satoshi font-bold text-[24px] leading-[30px] text-black">
             {userName}
           </p>
-          <div className="w-[18px] h-[18px] m-auto">
+          <div className="w-[18px] h-[18px] flex items-center justify-center">
             <div className="w-[8px] h-[8px] bg-black rounded-full opacity-20"></div>
           </div>
           <p className="font-satoshi font-medium text-[18px] leading-[25px] text-black opacity-60">

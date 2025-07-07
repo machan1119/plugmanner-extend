@@ -56,20 +56,20 @@ const ServicesData: ServicesDataType[] = [
 export default function SellingService() {
   return (
     <div className="min-w-[200px] max-w-[250px] pt-4 border-t border-white/10 sm:border-none sm:pt-0 transition-all duration-300">
-      <button className="font-clash leading-5 text-xl font-semibold flex items-center gap-4 text-white hover:text-primary transition-colors duration-300 focus:outline-none focus:text-primary group mb-4 md:mb-8">
+      <button className="font-clash leading-[25px] text-[20px] font-semibold flex items-center gap-4 text-white hover:text-primary focus:outline-none focus:text-primary group mb-4 md:mb-8">
         Best Selling Services
       </button>
-      <div className="md:flex md:flex-col columns-[200px] gap-4 overflow-hidden transition-all duration-300 ease-in-out max-h-[600px]">
+      <div className="md:flex md:flex-col columns-[200px] gap-4 overflow-hidden max-h-[600px]">
         <div className="w-full flex flex-col gap-4">
           <Link
-            className="w-full text-base leading-6 text-white/50 hover:text-primary hover:underline transition-colors duration-300"
+            className="font-satoshi text-[16px] leading-[11px] font-normal text-white/50 hover:text-primary hover:underline"
             href="/"
           >
             All Services
           </Link>
           {ServicesData.map((subservice, index) => (
             <Link
-              className="text-base leading-6 text-white/50 hover:text-primary hover:underline transition-colors duration-300"
+              className="font-satoshi text-[16px] leading-[20px] font-normal text-white/50 hover:text-primary hover:underline"
               href={subservice.href}
               key={index}
             >

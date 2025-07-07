@@ -18,7 +18,7 @@ function Section({ type, title, links }: SectionProps) {
   return (
     <div>
       <button
-        className="font-clash mb-4 leading-5 text-xl font-semibold text-left flex items-center gap-4 text-white hover:text-primary transition-colors duration-300 focus:outline-none focus:text-primary group lg:mb-4"
+        className="font-clash mb-4 leading-5 text-xl font-semibold text-left flex items-center gap-4 text-white hover:text-primary focus:outline-none focus:text-primary group lg:mb-4"
         tabIndex={0}
       >
         <span>{title}</span>
@@ -29,12 +29,12 @@ function Section({ type, title, links }: SectionProps) {
             key={link.label}
             aria-label={link.label}
             href={link.href}
-            className="text-base leading-6 text-white/50 hover:text-primary hover:underline transition-colors duration-300 flex items-center gap-2"
+            className="font-satoshi font-normal text-[16px] leading-[20px] text-white/50 hover:text-primary hover:underline flex items-center gap-2"
           >
             <span>
               {link.label}{" "}
               {link.isFree && (
-                <span className="bg-primary rounded-full text-black px-2 py-0.5 text-xs font-medium transition-colors duration-300 group-hover:bg-secondary">
+                <span className="font-satoshi bg-primary rounded-full text-black px-2 py-0.5 text-[12px] font-medium group-hover:bg-secondary">
                   Free
                 </span>
               )}
@@ -84,8 +84,8 @@ export default function FreeTool() {
 
   return (
     <div className="w-full md:w-[150px] grid grid-cols-2 gap-5 md:flex md:flex-col">
-      <Section type="free_tools" title="Free Tools" links={freeTools} />
       <Section type="quick_links" title="Quick Links" links={quickLinks} />
+      <Section type="free_tools" title="Free Tools" links={freeTools} />
     </div>
   );
 }

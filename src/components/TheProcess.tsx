@@ -33,7 +33,7 @@ export default function TheProcess() {
             How It Actually
             <span className="text-[32px] text-primary"> Works?</span>
           </h2>
-          <p className="w-[30%] font-satoshi font-normal text-[16px] leading-[18px] text-black opacity-70 text-center">
+          <p className="w-[30%] font-satoshi font-normal text-[16px] leading-[18px] text-black/70 text-center">
             Here’s how it works—simple, quick, and hassle-free to get started
             with our social media services.
           </p>

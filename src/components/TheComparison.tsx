@@ -52,7 +52,7 @@ export default function TheComparison() {
             <span className="text-[32px] text-primary">plug</span>
             compared to others
           </h2>
-          <p className="w-[30%] font-satoshi font-normal text-[16px] leading-[18px] text-black opacity-70 text-center">
+          <p className="w-[50%] font-satoshi font-normal text-[16px] leading-[18px] text-black text-center">
             See who dominated last month! 🚀 Explore our top-performing
             affiliates and get inspired to boost your earnings.
           </p>

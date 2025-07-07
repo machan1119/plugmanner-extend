@@ -67,7 +67,7 @@ export default function OurPricing() {
             Choose your
             <span className="text-[32px] text-primary"> growth plan</span>
           </h2>
-          <p className="w-[30%] font-satoshi font-normal text-[16px] leading-[18px] text-black opacity-70 text-center">
+          <p className="w-[30%] font-satoshi font-normal text-[16px] leading-[18px] text-black/70 text-center">
             Pick a plan that fits your goals and start growing today—no password
             needed.
           </p>
