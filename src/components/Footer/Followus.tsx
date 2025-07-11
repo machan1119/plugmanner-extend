@@ -1,8 +1,7 @@
 "use client";
-import React, { memo, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { LinkedInIcon, TwitterIcon, YoutubeIcon } from "@/libs/SVG";
-import { MainButton } from "../Button";
 
 interface SocialLink {
   href: string;
@@ -37,7 +36,7 @@ export default function FollowUs() {
   };
 
   return (
-    <div className="border-t border-white/10 pt-4 sm:border-none md:mt-[-300px] sm:border-t sm:border-white/10 md:border-none md:pt-0 lg:mt-0 transition-all duration-300">
+    <div className="md:w-[40%] w-full pt-4 md:pt-0 lg:mt-0">
       <p className="font-clash mb-4 text-[20px] leading-[25px] font-semibold text-white">
         Follow Us
       </p>

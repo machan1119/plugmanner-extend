@@ -1,7 +1,7 @@
 export const Solar_Sale = (
   <svg
-    width="33"
-    height="34"
+    width="100%"
+    height="100%"
     viewBox="0 0 33 34"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -30,8 +30,8 @@ export const Solar_Sale = (
 
 export const Key_Svg = (
   <svg
-    width="24"
-    height="25"
+    width="100%"
+    height="100%"
     viewBox="0 0 24 25"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -55,8 +55,8 @@ export const Key_Svg = (
 
 export const Delivery = (
   <svg
-    width="24"
-    height="25"
+    width="100%"
+    height="100%"
     viewBox="0 0 24 25"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -75,8 +75,8 @@ export const Delivery = (
 
 export const Golden_Cart_bg = (
   <svg
-    width="187"
-    height="144"
+    width="100%"
+    height="100%"
     viewBox="0 0 187 144"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -163,8 +163,8 @@ export const Golden_Cart_bg = (
 
 export const Platinum_Cart_bg = (
   <svg
-    width="187"
-    height="144"
+    width="100%"
+    height="100%"
     viewBox="0 0 187 144"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -271,8 +271,8 @@ export const Platinum_Cart_bg = (
 
 export const Diamond_Cart_bg = (
   <svg
-    width="187"
-    height="144"
+    width="100%"
+    height="100%"
     viewBox="0 0 187 144"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -361,8 +361,8 @@ export const Diamond_Cart_bg = (
 
 export const Trend = (
   <svg
-    width="24"
-    height="24"
+    width="100%"
+    height="100%"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -383,8 +383,8 @@ export const Trend = (
 
 export const Tick = (
   <svg
-    width="22"
-    height="23"
+    width="100%"
+    height="100%"
     viewBox="0 0 22 23"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -408,8 +408,8 @@ export const Tick = (
 
 export const BigQuote = (
   <svg
-    width="33"
-    height="29"
+    width="100%"
+    height="100%"
     viewBox="0 0 33 29"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -550,7 +550,7 @@ export const PrevArrowButton = (
       rx="20.5"
       transform="matrix(-1 0 0 1 41 0)"
       fill="white"
-      fill-opacity="0.4"
+      fillOpacity="0.4"
     />
     <path
       d="M23.5748 11.2748L25.0098 12.8123L17.4248 20.4998L25.0098 28.1873L23.5748 29.7248L14.3498 20.4998L23.5748 11.2748Z"

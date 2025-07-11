@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import Link from "next/link";
 
 interface ToolLink {
@@ -23,13 +23,13 @@ function Section({ type, title, links }: SectionProps) {
       >
         <span>{title}</span>
       </button>
-      <div className="flex flex-col gap-4 transition-all duration-300 ease-in-out lg:max-h-[500px] max-h-[500px]">
+      <div className="flex flex-col gap-4 transition-all duration-300 ease-in-out max-h-[500px]">
         {selected_links.map((link) => (
           <Link
             key={link.label}
             aria-label={link.label}
             href={link.href}
-            className="font-satoshi font-normal text-[16px] leading-[20px] text-white/50 hover:text-primary hover:underline flex items-center gap-2"
+            className="font-satoshi font-normal text-[16px] leading-[20px] tracking-[-1px] text-white/50 hover:text-primary hover:underline flex items-center gap-2"
           >
             <span>
               {link.label}{" "}
@@ -83,7 +83,7 @@ export default function FreeTool() {
   ];
 
   return (
-    <div className="w-full md:w-[150px] grid grid-cols-2 gap-5 md:flex md:flex-col">
+    <div className="w-full md:w-[40%] xl:w-[175px] grid grid-cols-2 gap-5 xl:flex xl:flex-col">
       <Section type="quick_links" title="Quick Links" links={quickLinks} />
       <Section type="free_tools" title="Free Tools" links={freeTools} />
     </div>

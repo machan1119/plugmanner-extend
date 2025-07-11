@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import Link from "next/link";
 
 interface ServicesDataType {
@@ -55,12 +55,12 @@ const ServicesData: ServicesDataType[] = [
 
 export default function SellingService() {
   return (
-    <div className="min-w-[200px] max-w-[250px] pt-4 border-t border-white/10 sm:border-none sm:pt-0 transition-all duration-300">
+    <div className="min-w-[200px] w-full md:w-[40%] xl:w-full xl:max-w-[250px] pt-4">
       <button className="font-clash leading-[25px] text-[20px] font-semibold flex items-center gap-4 text-white hover:text-primary focus:outline-none focus:text-primary group mb-4 md:mb-8">
         Best Selling Services
       </button>
-      <div className="md:flex md:flex-col columns-[200px] gap-4 overflow-hidden max-h-[600px]">
-        <div className="w-full flex flex-col gap-4">
+      <div className="md:flex md:flex-col gap-4 overflow-hidden w-full xl:max-h-[600px]">
+        <div className="w-full grid xl:grid-cols-1 grid-cols-2 gap-4">
           <Link
             className="font-satoshi text-[16px] leading-[11px] font-normal text-white/50 hover:text-primary hover:underline"
             href="/"
