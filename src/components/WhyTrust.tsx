@@ -15,22 +15,22 @@ interface ReviewCardProps {
 
 export default function WhyTrust() {
   return (
-    <section className="w-full bg-white mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-[36px]">
-      <div className="container-responsive py-6 sm:py-8 md:py-10 lg:py-12 xl:py-[48px]">
-        <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 lg:gap-4 xl:gap-4 mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-[54px]">
-          <div className="bg-secondary rounded-full py-[12px] sm:py-[13px] md:py-[14px] lg:py-[14px] xl:py-[14px] px-4 sm:px-4 md:px-5 lg:px-5 xl:px-5 border-[2px] border-white shadow-md font-satoshi font-bold text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px] leading-[10px] sm:leading-[11px] md:leading-[11px] lg:leading-[12px] xl:leading-[12px] text-primary tracking-[-0.5px] sm:tracking-[-0.75px] md:tracking-[-1px] lg:tracking-[-1px] xl:tracking-[-1px]">
+    <section className="w-full bg-white xl:mb-[36px]">
+      <div className="max-w-[1440px] w-full py-[24px] xl:py-[48px] mx-auto">
+        <div className="flex flex-col items-center gap-2 xl:gap-4 mb-[24px] xl:mb-[54px]">
+          <div className="bg-secondary rounded-full py-[14px] px-5 border-[2px] border-white shadow-md font-satoshi font-bold text-[14px] leading-[10px] xl:text-[16px] xl:leading-[12px] text-primary tracking-[-1px]">
             Why Trust SocialPlug?
           </div>
-          <h2 className="font-h2 text-center">
+          <h2 className="font-h2">
             Real Results from
             <span className="text-primary"> Real People</span>
           </h2>
-          <p className="w-[85%] sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[60%] font-body text-center">
+          <p className="xl:w-[60%] w-[80%] font-satoshi font-normal xl:text-[16px] text-[14px] leading-[18px] text-center text-black">
             No bots. No shadowbans. Just real growth stories from real
             customers.
           </p>
         </div>
-        <div className="flex mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-5">
+        <div className="flex xl:mb-5 mb-[10px]">
           <Swiper
             slidesPerView="auto"
             spaceBetween={20}
@@ -47,7 +47,7 @@ export default function WhyTrust() {
             simulateTouch={false}
             className="mySwiper"
           >
-            <SwiperSlide className="!w-[280px] sm:!w-[300px] md:!w-[320px] lg:!w-[400px] xl:!w-[640px]">
+            <SwiperSlide className="xl:!w-[640px] md:!w-[420px] lg:!w-[540px] !w-[320px]">
               <ReviewCard
                 imgURL="/img/review_img_1.png"
                 title="No Shadownban after 3 months!"
@@ -56,7 +56,7 @@ export default function WhyTrust() {
                 userType="Fashion Blogger"
               />
             </SwiperSlide>
-            <SwiperSlide className="!w-[280px] sm:!w-[300px] md:!w-[320px] lg:!w-[400px] xl:!w-[640px]">
+            <SwiperSlide className="xl:!w-[640px] md:!w-[420px] lg:!w-[540px] !w-[320px]">
               <ReviewCard
                 imgURL="/img/review_img_2.png"
                 title="Didn't even need my password. So much safer than other sites"
@@ -65,7 +65,7 @@ export default function WhyTrust() {
                 userType="Musician"
               />
             </SwiperSlide>
-            <SwiperSlide className="!w-[280px] sm:!w-[300px] md:!w-[320px] lg:!w-[400px] xl:!w-[640px]">
+            <SwiperSlide className="xl:!w-[640px] md:!w-[420px] lg:!w-[540px] !w-[320px]">
               <ReviewCard
                 imgURL="/img/review_img_3.png"
                 title="Didn't even need my password. So much safer than other sites"
@@ -76,7 +76,7 @@ export default function WhyTrust() {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="flex mb-3 sm:mb-4 md:mb-5 lg:mb-5 xl:mb-5">
+        <div className="flex xl:mb-5 mb-[10px]">
           <Swiper
             slidesPerView="auto"
             spaceBetween={20}
@@ -94,7 +94,7 @@ export default function WhyTrust() {
             simulateTouch={false}
             className="mySwiper"
           >
-            <SwiperSlide className="!w-[280px] sm:!w-[300px] md:!w-[320px] lg:!w-[400px] xl:!w-[640px]">
+            <SwiperSlide className="xl:!w-[640px] md:!w-[420px] lg:!w-[540px] !w-[320px]">
               <ReviewCard
                 imgURL="/img/review_img_4.png"
                 title="The followers actually look like real people with real profiles"
@@ -103,7 +103,7 @@ export default function WhyTrust() {
                 userType="Small Business Owner"
               />
             </SwiperSlide>
-            <SwiperSlide className="!w-[280px] sm:!w-[300px] md:!w-[320px] lg:!w-[400px] xl:!w-[640px]">
+            <SwiperSlide className="xl:!w-[640px] md:!w-[420px] lg:!w-[540px] !w-[320px]">
               <ReviewCard
                 imgURL="/img/review_img_5.png"
                 title="Got my first brand collab within 2 weeks of hitting 5K!"
@@ -112,7 +112,7 @@ export default function WhyTrust() {
                 userType="Fitness Coach"
               />
             </SwiperSlide>
-            <SwiperSlide className="!w-[280px] sm:!w-[300px] md:!w-[320px] lg:!w-[400px] xl:!w-[640px]">
+            <SwiperSlide className="xl:!w-[640px] md:!w-[420px] lg:!w-[540px] !w-[320px]">
               <ReviewCard
                 imgURL="/img/review_img_6.png"
                 title="No Shadownban after 3 months!"
@@ -136,34 +136,34 @@ function ReviewCard({
   userType,
 }: ReviewCardProps) {
   return (
-    <div className="bg-background-light w-[280px] sm:w-[300px] md:w-[320px] lg:w-[400px] xl:w-[640px] h-[140px] sm:h-[150px] md:h-[170px] lg:h-[220px] xl:h-[340px] rounded-[12px] sm:rounded-[14px] md:rounded-[16px] lg:rounded-[16px] xl:rounded-[16px] border-[2px] border-white flex gap-2 sm:gap-3 md:gap-4 lg:gap-4 xl:gap-4 p-2 sm:p-3 md:p-4 lg:p-4 xl:p-4 shadow-xl">
+    <div className="bg-background-light xl:w-[640px] xl:h-[340px] md:w-[420px] lg:w-[540px] lg:h-[270px] md:h-[200px] w-[320px] h-[170px] rounded-[16px] border-[2px] border-white flex xl:gap-4 gap-2 xl:p-4 p-2 shadow-xl">
       <Image
         src={imgURL}
         width={250}
         height={305}
         alt="review_img"
-        className="w-[110px] sm:w-[120px] md:w-[125px] lg:w-[160px] xl:w-[250px] h-[137.5px] sm:h-[150px] md:h-[152.5px] lg:h-[200px] xl:h-[305px] object-cover rounded-[8px] sm:rounded-[10px] md:rounded-[12px] lg:rounded-[12px] xl:rounded-[12px]"
+        className="xl:w-[250px] xl:h-[305px] md:w-[40%] md:h-auto w-[125px] h-[152.5px]"
       />
       <div className="w-full flex flex-col justify-between">
-        <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 lg:gap-5 xl:gap-6">
-          <div className="size-[12px] sm:size-[14px] md:size-[16px] lg:size-[24px] xl:size-[32px]">{BigQuote}</div>
-          <div className="flex flex-col gap-1 sm:gap-2 md:gap-3 lg:gap-3 xl:gap-4">
-            <p className="font-clash font-semibold text-[8px] sm:text-[10px] md:text-[12px] lg:text-[16px] xl:text-[20px] leading-[10px] sm:leading-[12px] md:leading-[14px] lg:leading-[20px] xl:leading-[25px] text-black">
+        <div className="flex flex-col xl:gap-6 gap-3">
+          <div className="xl:size-[32px] md:size-6 size-[16px]">{BigQuote}</div>
+          <div className="flex flex-col xl:gap-4 gap-2">
+            <p className="font-clash font-semibold xl:text-[20px] xl:leading-[25px] md:text-[16px] md:leading-[20px] text-[10px] leading-[12px] text-black">
               {title}
             </p>
-            <p className="font-satoshi font-medium text-[7px] sm:text-[8px] md:text-[10px] lg:text-[14px] xl:text-[18px] leading-[10px] sm:leading-[11px] md:leading-[13px] lg:leading-[18px] xl:leading-[25px] text-black">
+            <p className="font-satoshi font-medium text-[9px] leading-[12.5px] md:text-[14px] md:leading-[16px] xl:text-[18px] xl:leading-[25px] text-black">
               {description}
             </p>
           </div>
         </div>
-        <div className="flex gap-1 sm:gap-1 md:gap-2 lg:gap-2 xl:gap-2 items-center w-full">
-          <p className="font-satoshi font-bold text-[10px] sm:text-[12px] md:text-[14px] lg:text-[18px] xl:text-[24px] leading-[12px] sm:leading-[14px] md:leading-[16px] lg:leading-[22px] xl:leading-[30px] text-black">
+        <div className="flex xl:gap-2 gap-1 items-center w-full">
+          <p className="font-satoshi font-bold text-[12px] leading-[15px] md:text-[18px] md:leading-[20px] xl:text-[24px] xl:leading-[30px] text-black">
             {userName}
           </p>
-          <div className="w-[12px] sm:w-[14px] md:w-[16px] lg:w-[20px] xl:w-[18px] h-[12px] sm:h-[14px] md:h-[16px] lg:h-[20px] xl:h-[18px] flex items-center justify-center">
-            <div className="w-[4px] sm:w-[5px] md:w-[6px] lg:w-[8px] xl:w-[8px] h-[4px] sm:h-[5px] md:h-[6px] lg:h-[8px] xl:h-[8px] bg-black rounded-full opacity-20"></div>
+          <div className="w-[18px] h-[18px] flex items-center justify-center">
+            <div className="w-[8px] h-[8px] bg-black rounded-full opacity-20"></div>
           </div>
-          <p className="font-satoshi font-medium text-[7px] sm:text-[8px] md:text-[10px] lg:text-[14px] xl:text-[18px] leading-[10px] sm:leading-[11px] md:leading-[13px] lg:leading-[18px] xl:leading-[25px] text-black opacity-60">
+          <p className="font-satoshi font-medium text-[9px] leading-[12.5px] md:text-[14px] md:leading-[16px] xl:text-[18px] xl:leading-[25px] text-black opacity-60">
             {userType}
           </p>
         </div>
