@@ -103,3 +103,35 @@ body {
   border-radius: 41px;
 } */
 /* Swiper */
+
+.slider-top_1 {
+  animation: marquee-mobile_1 8s infinite linear;
+  overflow: hidden;
+  -webkit-box-pack: start;
+}
+
+@keyframes marquee-mobile_1 {
+  0%  {
+    right: -100px;
+  }
+  
+  100% {
+    right: calc(100vw + 200px);
+  }
+}
+
+
+.slider-top_2 {
+  animation: marquee-mobile_2 8s infinite linear;
+  overflow: hidden;
+  -webkit-box-pack: start;
+}
+
+@keyframes marquee-mobile_2 {
+  0%  {
+    right: -300px;
+  }
+  100% {
+    right: calc(100vw);
+  }
+}

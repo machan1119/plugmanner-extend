@@ -1,3 +1,4 @@
+import { False_Icon, True_Icon } from "@/libs/SVG";
 import Image from "next/image";
 
 const TheCompareData = [
@@ -98,24 +99,14 @@ function CompareTableRow({ description, socialplug, other }: TheCompareProps) {
         {description}
       </p>
       <div className="xl:w-[20%] w-[25%] mx-auto flex justify-center">
-        <Image
-          src={`${
-            socialplug ? "/img/compare_true.png" : "/img/compare_false.png"
-          }`}
-          width={35}
-          height={35}
-          alt={`${socialplug}`}
-          className="xl:size-[35px] md:size-7 size-[20px]"
-        />
+        <div className="xl:size-[35px] md:size-7 size-[20px]">
+          {socialplug ? True_Icon : False_Icon}
+        </div>
       </div>
       <div className="w-[40%] mx-auto flex justify-center">
-        <Image
-          src={`${other ? "/img/compare_true.png" : "/img/compare_false.png"}`}
-          width={35}
-          height={35}
-          alt={`${other}`}
-          className="xl:size-[35px] md:size-7 size-[20px]"
-        />
+        <div className="xl:size-[35px] md:size-7 size-[20px]">
+          {other ? True_Icon : False_Icon}
+        </div>
       </div>
     </div>
   );

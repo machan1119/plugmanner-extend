@@ -71,7 +71,7 @@ export default function OurPricing() {
             needed.
           </p>
         </div>
-        <div className="flex lg:flex-row flex-col gap-6">
+        <div className="flex lg:flex-row flex-col gap-6 items-center justify-center">
           {PricingCardData.map((item, index) => (
             <PricingCard
               type={item.type}
@@ -160,7 +160,7 @@ function PricingCard({
         ))}
       </div>
       <div className="flex flex-col gap-3 items-center">
-        <button className="w-full rounded-[8px] py-3 bg-primary font-clash font-semibold text-[20px] text-white leading-[25px]">
+        <button className="w-full rounded-[8px] py-3 bg-primary hover:bg-[#007645] active:bg-primary/50 font-clash font-semibold text-[20px] text-white leading-[25px]">
           Get Started
         </button>
         <Image
