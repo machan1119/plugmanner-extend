@@ -12,9 +12,9 @@ export default function RealTicket() {
             width={105}
             height={105}
             alt="instagram_beauty"
-            className="size-[52.5px] md:size-[80px] xl:size-[105px]"
+            className="absolute size-[60px] md:size-[90px] xl:size-[120px]"
           />
-          <div className="flex flex-col gap-2">
+          <div className="ml-[62px] flex flex-col gap-2">
             <p className="font-satoshi font-medium text-[7px] leading-[5px] md:text-[12px] md:leading-[10px] xl:text-[14px] xl:leading-[10px] text-white/70 uppercase">
               Break the algorithm. Get real results.
             </p>

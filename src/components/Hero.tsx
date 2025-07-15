@@ -13,11 +13,12 @@ import {
 import Image from "next/image";
 import { MainButton } from "./Button";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Autoplay, Navigation } from "swiper/modules";
+// import { FreeMode, Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
+import { Navigation } from "swiper/modules";
 
 interface ReachDataType {
   accounts: string;
@@ -46,13 +47,15 @@ interface CartType {
   start_value: string;
   current_value: string;
   bg: JSX.Element;
+  handleClick: () => void;
+  value: number;
+  currentValue: number;
 }
 
 const HeroUserImages = [
   "/img/hero_user_1.png",
-  "/img/hero_user_2.png",
-  "/img/hero_user_3.png",
   "/img/hero_user_4.png",
+  "/img/hero_user_2.png",
   "/img/hero_user_3.png",
 ];
 
@@ -71,6 +74,21 @@ const HeroUserImages_2 = [
 ];
 
 export default function Hero() {
+  const [value, setValue] = useState(2);
+  const [featuredImage, setFeaturedImage] = useState("/img/hero_user_0.png");
+  useEffect(() => {
+    function handleResize() {
+      const width = window.innerWidth;
+      if (width >= 768) {
+        setFeaturedImage("/img/hero_user_0.png");
+      } else {
+        setFeaturedImage("/img/hero_user_6.png");
+      }
+    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   function AddCartHandleClick() {
     return;
   }
@@ -99,7 +117,7 @@ export default function Hero() {
                   key={index}
                 >
                   <Image
-                    src={item}
+                    src={featuredImage}
                     width={610}
                     height={610}
                     alt="hero_img_1"
@@ -113,11 +131,11 @@ export default function Hero() {
                   key={index}
                 >
                   <Image
-                    src={item}
+                    src={featuredImage}
                     width={402}
                     height={292}
                     alt="hero_img_1"
-                    className="md:rounded-[30px] size-full"
+                    className="md:rounded-[30px] w-full aspect-[402/292]"
                   />
                 </SwiperSlide>
               ))}
@@ -137,14 +155,14 @@ export default function Hero() {
               {PrevArrowButton}
             </button>
           </div>
-          <div className="md:hidden w-full flex justify-between items-center bg-black mb-[12px] px-2 py-[6px]">
-            <div className="flex gap-1 items-center">
+          <div className="md:hidden w-full h-[44px] relative flex overflow-hidden items-center bg-black mb-[12px] px-2 py-[6px]">
+            <div className="absolute flex gap-1 items-center slider-top_1 w-max">
               <div className="size-6 p-1">{Key_Svg}</div>
               <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
                 No Password Requied
               </p>
             </div>
-            <div className="flex gap-1 items-center">
+            <div className="absolute flex gap-1 items-center slider-top_2 w-max">
               <div className="size-6 p-1">{Delivery}</div>
               <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
                 Delivery Starts Instantly
@@ -152,7 +170,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="w-full flex items-center xl:px-0 px-[11px] relative overflow-hidden">
-            <Swiper
+            {/* <Swiper
               slidesPerView="auto"
               spaceBetween={8}
               loop={true}
@@ -167,23 +185,26 @@ export default function Hero() {
               allowTouchMove={false}
               simulateTouch={false}
               className="mySwiper"
-            >
+            > */}
+            <div className="flex justify-between w-full">
               {HeroUserImages.map((item, index) => (
-                <SwiperSlide
-                  className="!w-[88px] md:!w-[100px] xl:!w-[150px]"
+                // <SwiperSlide
+                //   className="!w-[88px] md:!w-[100px] xl:!w-[150px]"
+                //   key={index}
+                // >
+                <Image
+                  src={item}
+                  width={150}
+                  height={150}
+                  alt="user_image"
                   key={index}
-                >
-                  <Image
-                    src={item}
-                    width={150}
-                    height={150}
-                    alt="user_image"
-                    className="rounded-[12px] xl:mr-[6px] size-full aspect-[1]"
-                  />
-                </SwiperSlide>
+                  className="cursor-pointer rounded-[12px] xl:mr-[6px] !size-[88px] md:!size-[100px] xl:!size-[150px] aspect-[1]"
+                  onClick={() => setFeaturedImage(item)}
+                />
               ))}
-            </Swiper>
-            <div className="w-[40px] h-full absolute right-0 bg-gradient-to-l from-white to-white/0 z-20" />
+            </div>
+            {/* </Swiper> */}
+            <div className="w-[80px] h-full absolute right-0 bg-gradient-to-l from-white to-white/0 z-20" />
           </div>
         </div>
         <div className="flex flex-col items-center w-full xl:w-[600px] md:w-[50%] px-4">
@@ -265,7 +286,7 @@ export default function Hero() {
               </p>
             </div>
           </div>
-          <div className="flex w-full justify-between sm:gap-4 sm:justify-center md:justify-between items-end md:mb-6 mb-[14px]">
+          <div className="flex flex-col items-center sm:flex-row w-full justify-between sm:gap-4 sm:justify-center md:justify-between sm:items-end md:mb-6 mb-[14px]">
             <Cart
               type="gold"
               title="GOLD"
@@ -273,6 +294,9 @@ export default function Hero() {
               start_value="$129"
               current_value="$79"
               bg={Golden_Cart_bg}
+              handleClick={() => setValue(1)}
+              value={value}
+              currentValue={1}
             />
             <Cart
               type="platinum"
@@ -281,6 +305,9 @@ export default function Hero() {
               start_value="$149"
               current_value="$99"
               bg={Platinum_Cart_bg}
+              handleClick={() => setValue(2)}
+              value={value}
+              currentValue={2}
             />
             <Cart
               type="diamond"
@@ -289,6 +316,9 @@ export default function Hero() {
               start_value="$139"
               current_value="$89"
               bg={Diamond_Cart_bg}
+              handleClick={() => setValue(3)}
+              value={value}
+              currentValue={3}
             />
           </div>
           <MainButton
@@ -303,7 +333,7 @@ export default function Hero() {
             alt="payment_methods"
             className="xl:mb-[15px] mb-[10px] self-center xl:w-[380px] xl:h-[25px] w-[292px] h-[20px]"
           />
-          <div className="xl:w-[340px] h-[40px] xl:py-[12px] xl:px-[18px] p-[2px] border-[3px] border-black-border rounded-[12px] flex items-center justify-between self-center">
+          <div className="xl:w-[340px] h-[31px] xl:py-[12px] xl:px-[18px] p-[2px] border-[3px] border-black-border rounded-[6px] flex items-center justify-between self-center">
             <Image
               src="/img/golden_mark.png"
               width={32}
@@ -470,9 +500,15 @@ function Cart({
   start_value,
   current_value,
   bg,
+  handleClick,
+  value,
+  currentValue,
 }: CartType) {
   return (
-    <div className="xl:w-[187px] md:w-[30%] w-[115px]">
+    <div
+      className="xl:w-[187px] md:w-[30%] w-[115px] cursor-pointer"
+      onClick={handleClick}
+    >
       {type == "platinum" && (
         <div className="w-full xl:h-[30px] h-[25px] mb-[-10px] xl:rounded-t-[16px] rounded-t-[10px] xl:border-[3px] border-[1.5px] border-b-transparent border-black-border font-clash font-semibold text-[7.5px] leading-[9px] md:text-[12px] md:leading-[10px] xl:leading-[15px] xl:text-[12.4px] text-black text-center">
           Best Value
@@ -481,21 +517,21 @@ function Cart({
       <div className="xl:rounded-[16px] rounded-[10px] xl:border-[3px] border-[1.5px] border-black-border shadow-md overflow-hidden">
         <div
           className={`relative xl:size-[181px] md:size-full aspect-[1] size-[112px] ${
-            type == "platinum" &&
+            value == currentValue &&
             "bg-primary xl:border-[3px] border-[1.5px] border-primary xl:rounded-[16px] rounded-[10px] overflow-hidden"
           }`}
         >
           <div className="realative w-full h-full xl:p-2 p-1 z-20 flex flex-col justify-between items-center">
             <div
               className={`absolute xl:size-[22px] size-[14px] top-1 right-1 xl:top-2 xl:right-2 ${
-                type == "platinum" ? "flex" : "hidden"
+                value == currentValue ? "flex" : "hidden"
               }`}
             >
               {Tick}
             </div>
             <p
               className={`font-clash font-semibold xl:text-[21px] lg:text-[16px] text-[13px] text-center ${
-                type == "platinum" ? "text-white" : "text-black"
+                value == currentValue ? "text-white" : "text-black"
               }`}
             >
               {title}

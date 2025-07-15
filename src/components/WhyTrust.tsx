@@ -30,7 +30,7 @@ export default function WhyTrust() {
             customers.
           </p>
         </div>
-        <div className="flex xl:mb-5 mb-[10px]">
+        <div className="flex">
           <Swiper
             slidesPerView="auto"
             spaceBetween={20}
@@ -76,7 +76,7 @@ export default function WhyTrust() {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="flex xl:mb-5 mb-[10px]">
+        <div className="flex">
           <Swiper
             slidesPerView="auto"
             spaceBetween={20}
@@ -136,7 +136,7 @@ function ReviewCard({
   userType,
 }: ReviewCardProps) {
   return (
-    <div className="bg-background-light xl:w-[640px] xl:h-[340px] md:w-[420px] lg:w-[540px] lg:h-[270px] md:h-[200px] w-[320px] h-[170px] rounded-[16px] border-[2px] border-white flex xl:gap-4 gap-2 xl:p-4 p-2 shadow-xl">
+    <div className="bg-background-light xl:w-[640px] xl:h-[360px] md:w-[420px] lg:w-[540px] lg:h-[290px] md:h-[220px] w-[320px] h-[190px] rounded-[16px] border-[2px] border-white flex xl:gap-4 gap-2 xl:p-4 p-2 mb-[20px] shadow-xl">
       <Image
         src={imgURL}
         width={250}
