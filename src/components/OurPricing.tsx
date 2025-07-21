@@ -1,3 +1,4 @@
+import { PricingTickBlue, PricingTickGrey } from "@/libs/SVG";
 import Image from "next/image";
 
 interface PricingCardProps {
@@ -141,14 +142,9 @@ function PricingCard({
       <div className="flex flex-col gap-4">
         {description.map((item, index) => (
           <div className="flex items-center gap-2" key={index}>
-            <Image
-              src={
-                popular ? "/img/pricing_tick_2.png" : "/img/pricing_tick_1.png"
-              }
-              width={24}
-              height={24}
-              alt="pricing_tick"
-            />
+            <div className="size-6">
+              {popular ? PricingTickGrey : PricingTickBlue}
+            </div>
             <p
               className={`font-satoshi font-medium text-[16px] leading-[22px] ${
                 popular ? "text-white" : "text-black"
@@ -163,11 +159,19 @@ function PricingCard({
         <button className="w-full rounded-[8px] py-3 bg-primary hover:bg-[#007645] active:bg-primary/50 font-clash font-semibold text-[20px] text-white leading-[25px]">
           Get Started
         </button>
-        <Image
+        {/* <Image
           src="/img/payments.png"
-          width={287}
-          height={20}
+          width={381}
+          height={26}
           alt="payment_methods"
+          className="w-[287px] h-[20px]"
+        /> */}
+        <Image
+          src="/img/payments.svg"
+          width={294}
+          height={21}
+          alt="payment_methods"
+          className="w-[294px]"
         />
       </div>
     </div>

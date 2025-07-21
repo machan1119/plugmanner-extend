@@ -55,6 +55,11 @@ body {
   -webkit-mask-image: radial-gradient(48.99% 71.99% at 50% 10.3%, #000000 0%, rgba(0, 0, 0, 0) 100%);
 }
 
+.dot-mask-header {
+  mask-image: radial-gradient(100.71% 43.34% at 87.84% 45.75%, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 100%);
+  -webkit-mask-image: radial-gradient(100.71% 43.34% at 87.84% 45.75%, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
 .grid-mask {
   mask-image: radial-gradient(44.67% 79.4% at 48.69% 51%, rgba(13, 13, 18, 0.45) 0%, rgba(13, 13, 18, 0) 100%, rgba(13, 13, 18, 0) 100%);
   -webkit-mask-image: radial-gradient(44.67% 79.4% at 48.69% 51%, rgba(13, 13, 18, 0.45) 0%, rgba(13, 13, 18, 0) 100%, rgba(13, 13, 18, 0) 100%);

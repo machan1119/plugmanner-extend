@@ -1,12 +1,20 @@
 import Image from "next/image";
 
-const TopMediaImgURLs = [
+const TopMediaImgURLs_1 = [
   "/img/media_img_1.png",
   "/img/media_img_2.png",
   "/img/media_img_3.png",
   "/img/media_img_4.png",
   "/img/media_img_5.png",
   "/img/media_img_6.png",
+];
+const TopMediaImgURLs_2 = [
+  "/img/media_img_7.png",
+  "/img/media_img_8.png",
+  "/img/media_img_9.png",
+  "/img/media_img_10.png",
+  "/img/media_img_11.png",
+  "/img/media_img_12.png",
 ];
 
 export default function TopMedia() {
@@ -59,42 +67,44 @@ export default function TopMedia() {
           <p className="font-satoshi font-medium text-[16px] md:text-[18px] xl:text-[20px] text-black/50 uppercase">
             Featured in Top Media
           </p>
-          <div className="hidden lg:flex justify-between gap-5 xl:gap-[52px] items-center">
-            {TopMediaImgURLs.map((item, index) => (
+          <div className="hidden h-[28px] lg:flex justify-between gap-5 xl:gap-[52px] items-center">
+            {TopMediaImgURLs_2.map((item, index) => (
               <Image
                 src={item}
                 width={175}
                 height={28}
                 alt="top_media_img"
-                className="xl:size-full size-[40%]"
+                className="lg:size-full"
                 key={index}
               />
             ))}
           </div>
           <div className="lg:hidden flex flex-col gap-5">
             <div className="flex justify-between gap-5 items-center">
-              {TopMediaImgURLs.slice(0, 3).map((item, index) => (
+              {TopMediaImgURLs_1.slice(0, 3).map((item, index) => (
                 <div className="h-[20px]" key={index}>
-                  <Image
+                  <img src={item} />
+                  {/* <Image
                     src={item}
-                    width={175}
-                    height={28}
+                    width={140}
+                    height={20}
                     alt="top_media_img"
                     className="size-full"
-                  />
+                  /> */}
                 </div>
               ))}
             </div>
             <div className="flex justify-between gap-5 items-center">
-              {TopMediaImgURLs.slice(3, 6).map((item, index) => (
+              {TopMediaImgURLs_1.slice(3, 6).map((item, index) => (
                 <div className="h-[20px]" key={index}>
-                  <Image
+                  <img src={item} />
+                  {/* <Image
                     src={item}
-                    width={175}
-                    height={28}
+                    width={140}
+                    height={20}
                     alt="top_media_img"
                     className="size-full"
-                  />
+                  /> */}
                 </div>
               ))}
             </div>

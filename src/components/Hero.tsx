@@ -1,12 +1,17 @@
 "use client";
 import {
+  CommetIcon,
   Delivery,
   Diamond_Cart_bg,
   Golden_Cart_bg,
   Key_Svg,
+  LikeIcon,
+  LoveIcon,
   NextArrowButton,
   Platinum_Cart_bg,
   PrevArrowButton,
+  ShareIcon,
+  StarIcon,
   Tick,
   Trend,
 } from "@/libs/SVG";
@@ -17,8 +22,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
+import "swiper/css/thumbs";
 import { useEffect, useState } from "react";
-import { Navigation } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
 interface ReachDataType {
   accounts: string;
@@ -53,6 +60,7 @@ interface CartType {
 }
 
 const HeroUserImages = [
+  "/img/hero_user_0.png",
   "/img/hero_user_1.png",
   "/img/hero_user_4.png",
   "/img/hero_user_2.png",
@@ -61,34 +69,23 @@ const HeroUserImages = [
 
 const HeroUserImages_1 = [
   "/img/hero_user_0.png",
-  "/img/hero_user_0.png",
-  "/img/hero_user_0.png",
-  "/img/hero_user_0.png",
+  "/img/hero_user_1.png",
+  "/img/hero_user_4.png",
+  "/img/hero_user_2.png",
+  "/img/hero_user_3.png",
 ];
 
 const HeroUserImages_2 = [
   "/img/hero_user_6.png",
-  "/img/hero_user_6.png",
-  "/img/hero_user_6.png",
-  "/img/hero_user_6.png",
+  "/img/hero_user_1.png",
+  "/img/hero_user_4.png",
+  "/img/hero_user_2.png",
+  "/img/hero_user_3.png",
 ];
 
 export default function Hero() {
   const [value, setValue] = useState(2);
-  const [featuredImage, setFeaturedImage] = useState("/img/hero_user_0.png");
-  useEffect(() => {
-    function handleResize() {
-      const width = window.innerWidth;
-      if (width >= 768) {
-        setFeaturedImage("/img/hero_user_0.png");
-      } else {
-        setFeaturedImage("/img/hero_user_6.png");
-      }
-    }
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   function AddCartHandleClick() {
     return;
   }
@@ -109,7 +106,10 @@ export default function Hero() {
                 prevEl: ".custom-swiper-button-prev",
                 nextEl: ".custom-swiper-button-next",
               }}
-              modules={[Navigation]}
+              loop={true}
+              spaceBetween={10}
+              thumbs={{ swiper: thumbsSwiper }}
+              modules={[FreeMode, Navigation, Thumbs]}
             >
               {HeroUserImages_1.map((item, index) => (
                 <SwiperSlide
@@ -117,7 +117,7 @@ export default function Hero() {
                   key={index}
                 >
                   <Image
-                    src={featuredImage}
+                    src={item}
                     width={610}
                     height={610}
                     alt="hero_img_1"
@@ -131,7 +131,7 @@ export default function Hero() {
                   key={index}
                 >
                   <Image
-                    src={featuredImage}
+                    src={item}
                     width={402}
                     height={292}
                     alt="hero_img_1"
@@ -140,10 +140,12 @@ export default function Hero() {
                 </SwiperSlide>
               ))}
             </Swiper>
+
             <ReachCard
               data={ReachData}
               className="absolute top-[32px] right-[-32px] z-20 hidden md:block"
             />
+            <FavouriteCard className="absolute bottom-[96px] right-[-32px] z-20 hidden xl:flex" />
             <StateCard
               data={StateData}
               className="absolute bottom-[20px] left-[20px] z-20"
@@ -187,21 +189,37 @@ export default function Hero() {
               className="mySwiper"
             > */}
             <div className="flex justify-between w-full">
-              {HeroUserImages.map((item, index) => (
-                // <SwiperSlide
-                //   className="!w-[88px] md:!w-[100px] xl:!w-[150px]"
-                //   key={index}
-                // >
-                <Image
-                  src={item}
-                  width={150}
-                  height={150}
-                  alt="user_image"
-                  key={index}
-                  className="cursor-pointer rounded-[12px] xl:mr-[6px] !size-[88px] md:!size-[100px] xl:!size-[150px] aspect-[1]"
-                  onClick={() => setFeaturedImage(item)}
-                />
-              ))}
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                // navigation={true}
+                loop={true}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper"
+              >
+                {HeroUserImages.map((item, index) => (
+                  // <SwiperSlide
+                  //   className="!w-[88px] md:!w-[100px] xl:!w-[150px]"
+                  //   key={index}
+                  // >
+                  <SwiperSlide
+                    key={index}
+                    className={`${index == 0 && "hidden"}`}
+                  >
+                    <Image
+                      src={item}
+                      width={150}
+                      height={150}
+                      alt="user_image"
+                      key={index}
+                      className="cursor-pointer rounded-[12px] xl:mr-[6px] !size-[88px] md:!size-[100px] xl:!size-[150px] aspect-[1]"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
             {/* </Swiper> */}
             <div className="w-[80px] h-full absolute right-0 bg-gradient-to-l from-white to-white/0 z-20" />
@@ -211,14 +229,9 @@ export default function Hero() {
           <div className="w-full flex items-center justify-center md:justify-start gap-[10px] py-[5px] md:py-[10px] md:px-3 md:mb-4 mb-3">
             <div className="flex gap-[5px]">
               {[...new Array(5)].map((_, index) => (
-                <Image
-                  src="/img/star.png"
-                  width={24}
-                  height={24}
-                  alt="star"
-                  key={index}
-                  className="md:size-[24px] size-[16px]"
-                />
+                <div key={index} className="md:size-[24px] size-[16px]">
+                  {StarIcon}
+                </div>
               ))}
             </div>
             <p className="font-satoshi font-bold text-[10px] md:text-[15px] leading-[20px] text-black">
@@ -327,12 +340,19 @@ export default function Hero() {
             handleClick={() => AddCartHandleClick()}
           />
           <Image
-            src="/img/payments.png"
-            width={380}
-            height={25}
+            src="/img/payments.svg"
+            width={381}
+            height={32}
             alt="payment_methods"
-            className="xl:mb-[15px] mb-[10px] self-center xl:w-[380px] xl:h-[25px] w-[292px] h-[20px]"
+            className="xl:mb-[15px] mb-[10px] self-center xl:w-[381px] w-[294px]"
           />
+          {/* <Image
+            src="/img/payments_1.png"
+            width={294}
+            height={21}
+            alt="payment_methods"
+            className="xl:hidden w-[294px] h-[21px] mb-[10px]"
+          /> */}
           <div className="xl:w-[340px] h-[31px] xl:py-[12px] xl:px-[18px] p-[2px] border-[3px] border-black-border rounded-[6px] flex items-center justify-between self-center">
             <Image
               src="/img/golden_mark.png"
@@ -348,6 +368,39 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function FavouriteCard({ className }: { className: string }) {
+  return (
+    <div
+      className={`bg-white md:gap-4 xl:gap-10 rounded-[12px] shadow-md font-inter px-6 py-4 border border-black-border ${className}`}
+    >
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {LoveIcon}
+        <p className="font-inter font-semibold md:text-[12px] xl:text-[13.6px] text-black leading-[10px]">
+          27.6K
+        </p>
+      </div>
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {CommetIcon}
+        <p className="font-inter font-semibold text-[13.6px] text-black leading-[10px]">
+          1.7K
+        </p>
+      </div>
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {ShareIcon}
+        <p className="font-inter font-semibold text-[13.6px] text-black leading-[10px]">
+          734
+        </p>
+      </div>
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {LikeIcon}
+        <p className="font-inter font-semibold text-[13.6px] text-black leading-[10px]">
+          1.56K
+        </p>
+      </div>
+    </div>
   );
 }
 

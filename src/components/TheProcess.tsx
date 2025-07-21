@@ -3,19 +3,19 @@ import Image from "next/image";
 export default function TheProcess() {
   const HowTo = [
     {
-      icon: "/img/process_step_1.png",
+      icon: "/img/process_step_1.svg",
       title: "Choose your Plan",
       description:
         "Choose the growth plan that fits your goals. No password or account access required.",
     },
     {
-      icon: "/img/process_step_2.png",
+      icon: "/img/process_step_2.svg",
       title: "We add Quality Followers",
       description:
         "We add quality followers who engage. No bots—just real people in your niche.",
     },
     {
-      icon: "/img/process_step_3.png",
+      icon: "/img/process_step_3.svg",
       title: "Multiply Your Wins",
       description:
         "More credibility brings more growth, better clients, and real results.",
@@ -79,7 +79,7 @@ function ProcessStep({ icon, title, description, count }: ProcessStepProps) {
         src={icon}
         alt={`${title} illustration`}
         loading="lazy"
-        className="shadow-2xl"
+        className="shadow-2xl rounded-2xl border border-black/20"
       />
       <div className="flex flex-col gap-2 items-center">
         <div className="bg-black rounded-[8px] flex justify-center items-center w-12 h-12 font-clash text-[30px] font-semibold text-primary leading-[37px] mb-2">

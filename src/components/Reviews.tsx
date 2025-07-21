@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { MainButton } from "./Button";
+import { StarIcon } from "@/libs/SVG";
 
 interface ReviewItemProps {
   title: string;
@@ -194,13 +195,9 @@ function ReviewItem({
       </p>
       <div className="flex gap-[6px] xl:gap-2 items-center mb-4">
         {[...new Array(rating)].map((_, index) => (
-          <Image
-            src="/img/star.png"
-            width={24}
-            height={24}
-            alt="star"
-            key={index}
-          />
+          <div key={index} className="md:size-[24px] size-[16px]">
+            {StarIcon}
+          </div>
         ))}
       </div>
       <p className="font-satoshi font-medium text-[16px] xl:text-[18px] leading-[13px] text-black mb-[10px]">
