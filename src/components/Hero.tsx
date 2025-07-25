@@ -1,12 +1,17 @@
 "use client";
 import {
+  CommetIcon,
   Delivery,
   Diamond_Cart_bg,
   Golden_Cart_bg,
   Key_Svg,
+  LikeIcon,
+  LoveIcon,
   NextArrowButton,
   Platinum_Cart_bg,
   PrevArrowButton,
+  ShareIcon,
+  StarIcon,
   Tick,
   Trend,
 } from "@/libs/SVG";
@@ -17,8 +22,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
+import "swiper/css/thumbs";
 import { useEffect, useState } from "react";
-import { Navigation } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 
 interface ReachDataType {
   accounts: string;
@@ -32,13 +39,10 @@ const ReachData: ReachDataType = {
 };
 
 interface StateDataType {
-  followers: string;
+  type: string;
+  likes: string;
   percent: string;
 }
-const StateData: StateDataType = {
-  followers: "46.8K",
-  percent: "32.7%",
-};
 
 interface CartType {
   type: string;
@@ -53,6 +57,7 @@ interface CartType {
 }
 
 const HeroUserImages = [
+  "/img/hero_user_0.png",
   "/img/hero_user_1.png",
   "/img/hero_user_4.png",
   "/img/hero_user_2.png",
@@ -61,34 +66,37 @@ const HeroUserImages = [
 
 const HeroUserImages_1 = [
   "/img/hero_user_0.png",
-  "/img/hero_user_0.png",
-  "/img/hero_user_0.png",
-  "/img/hero_user_0.png",
+  "/img/hero_user_1.png",
+  "/img/hero_user_4.png",
+  "/img/hero_user_2.png",
+  "/img/hero_user_3.png",
 ];
 
 const HeroUserImages_2 = [
   "/img/hero_user_6.png",
-  "/img/hero_user_6.png",
-  "/img/hero_user_6.png",
-  "/img/hero_user_6.png",
+  "/img/hero_user_1.png",
+  "/img/hero_user_4.png",
+  "/img/hero_user_2.png",
+  "/img/hero_user_3.png",
 ];
 
 export default function Hero() {
   const [value, setValue] = useState(2);
-  const [featuredImage, setFeaturedImage] = useState("/img/hero_user_0.png");
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  // Track if screen is md or larger
+  const [isMd, setIsMd] = useState(false);
   useEffect(() => {
     function handleResize() {
-      const width = window.innerWidth;
-      if (width >= 768) {
-        setFeaturedImage("/img/hero_user_0.png");
-      } else {
-        setFeaturedImage("/img/hero_user_6.png");
-      }
+      setIsMd(window.innerWidth >= 768); // Tailwind's md breakpoint
     }
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
+  const heroImages = isMd ? HeroUserImages_1 : HeroUserImages_2;
   function AddCartHandleClick() {
     return;
   }
@@ -109,45 +117,40 @@ export default function Hero() {
                 prevEl: ".custom-swiper-button-prev",
                 nextEl: ".custom-swiper-button-next",
               }}
-              modules={[Navigation]}
+              loop={true}
+              spaceBetween={10}
+              thumbs={{ swiper: thumbsSwiper }}
+              modules={[FreeMode, Navigation, Thumbs]}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             >
-              {HeroUserImages_1.map((item, index) => (
-                <SwiperSlide
-                  className="!hidden md:!block z-10 md:rounded-[30px]"
-                  key={index}
-                >
+              {heroImages.map((item, index) => (
+                <SwiperSlide key={index}>
                   <Image
-                    src={featuredImage}
-                    width={610}
-                    height={610}
+                    src={item}
+                    width={isMd ? 610 : 402}
+                    height={isMd ? 610 : 292}
                     alt="hero_img_1"
-                    className="md:rounded-[30px] xl:size-[610px] md:size-full size-full aspect-[1]"
-                  />
-                </SwiperSlide>
-              ))}
-              {HeroUserImages_2.map((item, index) => (
-                <SwiperSlide
-                  className="md:!hidden !block z-10 md:rounded-[30px]"
-                  key={index}
-                >
-                  <Image
-                    src={featuredImage}
-                    width={402}
-                    height={292}
-                    alt="hero_img_1"
-                    className="md:rounded-[30px] w-full aspect-[402/292]"
+                    className={isMd ? "md:rounded-[30px] xl:size-[610px] md:size-full size-full aspect-[1]" : "md:rounded-[30px] w-full aspect-[402/292]"}
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
+
             <ReachCard
               data={ReachData}
               className="absolute top-[32px] right-[-32px] z-20 hidden md:block"
             />
-            <StateCard
-              data={StateData}
-              className="absolute bottom-[20px] left-[20px] z-20"
-            />
+            <FavouriteCard className="absolute bottom-[96px] right-[-32px] z-20 hidden xl:flex" />
+            {/** Clamp the index to avoid out-of-bounds errors */}
+            {(() => {
+              const safeIndex = Math.max(0, Math.min(activeIndex, StateDataList.length - 1));
+              return (
+                <StateCard
+                  data={StateDataList[safeIndex]}
+                  className="absolute bottom-[20px] left-[20px] z-20"
+                />
+              );
+            })()}
             <button className="custom-swiper-button-next cursor-pointer absolute top-[calc(50%-20px)] right-[15px] z-20">
               {NextArrowButton}
             </button>
@@ -156,54 +159,68 @@ export default function Hero() {
             </button>
           </div>
           <div className="md:hidden w-full h-[44px] relative flex overflow-hidden items-center bg-black mb-[12px] px-2 py-[6px]">
-            <div className="absolute flex gap-1 items-center slider-top_1 w-max">
-              <div className="size-6 p-1">{Key_Svg}</div>
-              <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
-                No Password Requied
-              </p>
-            </div>
-            <div className="absolute flex gap-1 items-center slider-top_2 w-max">
-              <div className="size-6 p-1">{Delivery}</div>
-              <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
-                Delivery Starts Instantly
-              </p>
+            <div className="slider-marquee flex items-center w-max animate-slider-marquee hover:[animation-play-state:paused]">
+              {/* Original set */}
+              <div className="flex gap-8 items-center">
+                <div className="flex gap-1 items-center flex-shrink-0 min-w-[180px]">
+                  <div className="size-6 p-1">{Key_Svg}</div>
+                  <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
+                    No Password Requied
+                  </p>
+                </div>
+                <div className="flex gap-1 items-center flex-shrink-0 min-w-[210px]">
+                  <div className="size-6 p-1">{Delivery}</div>
+                  <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
+                    Delivery Starts Instantly
+                  </p>
+                </div>
+              </div>
+              {/* Duplicate for seamless loop */}
+              <div className="flex gap-8 items-center ml-8">
+                <div className="flex gap-1 items-center flex-shrink-0 min-w-[180px]">
+                  <div className="size-6 p-1">{Key_Svg}</div>
+                  <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
+                    No Password Requied
+                  </p>
+                </div>
+                <div className="flex gap-1 items-center flex-shrink-0 min-w-[210px]">
+                  <div className="size-6 p-1">{Delivery}</div>
+                  <p className="font-satoshi font-normal text-[14px] leading-[12px] text-white/50">
+                    Delivery Starts Instantly
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
           <div className="w-full flex items-center xl:px-0 px-[11px] relative overflow-hidden">
-            {/* <Swiper
-              slidesPerView="auto"
-              spaceBetween={8}
-              loop={true}
-              speed={3000}
-              modules={[FreeMode, Autoplay]}
-              autoplay={{
-                delay: 0,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: false,
-              }}
-              freeMode={{ enabled: true, momentum: false }}
-              allowTouchMove={false}
-              simulateTouch={false}
-              className="mySwiper"
-            > */}
             <div className="flex justify-between w-full">
-              {HeroUserImages.map((item, index) => (
-                // <SwiperSlide
-                //   className="!w-[88px] md:!w-[100px] xl:!w-[150px]"
-                //   key={index}
-                // >
-                <Image
-                  src={item}
-                  width={150}
-                  height={150}
-                  alt="user_image"
-                  key={index}
-                  className="cursor-pointer rounded-[12px] xl:mr-[6px] !size-[88px] md:!size-[100px] xl:!size-[150px] aspect-[1]"
-                  onClick={() => setFeaturedImage(item)}
-                />
-              ))}
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper"
+              >
+                {HeroUserImages.map((item, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className={`${index == 0 && "hidden"}`}
+                  >
+                    <Image
+                      src={item}
+                      width={150}
+                      height={150}
+                      alt="user_image"
+                      key={index}
+                      className="cursor-pointer rounded-[12px] xl:mr-[6px] !size-[88px] md:!size-[100px] xl:!size-[150px] aspect-[1]"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
-            {/* </Swiper> */}
             <div className="w-[80px] h-full absolute right-0 bg-gradient-to-l from-white to-white/0 z-20" />
           </div>
         </div>
@@ -211,14 +228,9 @@ export default function Hero() {
           <div className="w-full flex items-center justify-center md:justify-start gap-[10px] py-[5px] md:py-[10px] md:px-3 md:mb-4 mb-3">
             <div className="flex gap-[5px]">
               {[...new Array(5)].map((_, index) => (
-                <Image
-                  src="/img/star.png"
-                  width={24}
-                  height={24}
-                  alt="star"
-                  key={index}
-                  className="md:size-[24px] size-[16px]"
-                />
+                <div key={index} className="md:size-[24px] size-[16px]">
+                  {StarIcon}
+                </div>
               ))}
             </div>
             <p className="font-satoshi font-bold text-[10px] md:text-[15px] leading-[20px] text-black">
@@ -286,7 +298,7 @@ export default function Hero() {
               </p>
             </div>
           </div>
-          <div className="flex flex-col items-center sm:flex-row w-full justify-between sm:gap-4 sm:justify-center md:justify-between sm:items-end md:mb-6 mb-[14px]">
+          <div className="flex items-center sm:flex-row w-full justify-between sm:gap-4 sm:justify-center md:justify-between sm:items-end md:mb-6 mb-[14px]">
             <Cart
               type="gold"
               title="GOLD"
@@ -323,16 +335,23 @@ export default function Hero() {
           </div>
           <MainButton
             title="Add to cart"
-            className="w-full sm:w-[60%] md:w-full xl:mb-[15px] mb-[10px]"
+            className="w-full md:w-[60%] xl:w-full xl:mb-[15px] mb-[10px]"
             handleClick={() => AddCartHandleClick()}
           />
           <Image
-            src="/img/payments.png"
-            width={380}
-            height={25}
+            src="/img/payments.svg"
+            width={381}
+            height={32}
             alt="payment_methods"
-            className="xl:mb-[15px] mb-[10px] self-center xl:w-[380px] xl:h-[25px] w-[292px] h-[20px]"
+            className="xl:mb-[15px] mb-[10px] self-center xl:w-[381px] w-[294px]"
           />
+          {/* <Image
+            src="/img/payments_1.png"
+            width={294}
+            height={21}
+            alt="payment_methods"
+            className="xl:hidden w-[294px] h-[21px] mb-[10px]"
+          /> */}
           <div className="xl:w-[340px] h-[31px] xl:py-[12px] xl:px-[18px] p-[2px] border-[3px] border-black-border rounded-[6px] flex items-center justify-between self-center">
             <Image
               src="/img/golden_mark.png"
@@ -348,6 +367,39 @@ export default function Hero() {
         </div>
       </div>
     </section>
+  );
+}
+
+function FavouriteCard({ className }: { className: string }) {
+  return (
+    <div
+      className={`bg-white md:gap-4 xl:gap-10 rounded-[12px] shadow-md font-inter px-6 py-4 border border-black-border ${className}`}
+    >
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {LoveIcon}
+        <p className="font-inter font-semibold md:text-[12px] xl:text-[13.6px] text-black leading-[10px]">
+          27.6K
+        </p>
+      </div>
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {CommetIcon}
+        <p className="font-inter font-semibold text-[13.6px] text-black leading-[10px]">
+          1.7K
+        </p>
+      </div>
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {ShareIcon}
+        <p className="font-inter font-semibold text-[13.6px] text-black leading-[10px]">
+          734
+        </p>
+      </div>
+      <div className="w-[30px] h-[39px] flex flex-col items-center justify-between">
+        {LikeIcon}
+        <p className="font-inter font-semibold text-[13.6px] text-black leading-[10px]">
+          1.56K
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -400,6 +452,7 @@ function ReachProgress({ percent }: { percent: number }) {
   const [size, setSize] = useState(60);
   const [strokeWidth, setStrokeWidth] = useState(8);
   useEffect(() => {
+    if (typeof window === "undefined") return;
     function handleResize() {
       const width = window.innerWidth;
       if (width >= 1440) {
@@ -470,14 +523,14 @@ function StateCard({
           className="xl:size-[20px] size-[14px]"
         />
         <p className="font-satoshi font-medium text-[10px] leading-[7px] md:text[12px] xl:text-[14px] xl:leading-[10px] text-black">
-          Instagram Followers
+          {data.type}
         </p>
       </div>
       <div className="h-full flex items-center">
         <div className="flex flex-col gap-0 md:gap-4 xl:gap-0 h-full justify-between">
           <div className="flex w-full items-end">
             <p className="font-satoshi font-bold text-[28px] leading-[20px] md:text-[24px] md:leading-[18px] xl:text-[40px] xl:leading-[30px] text-black">
-              {data.followers}
+              {data.likes}
             </p>
             <div className="size-6 md:size-4 xl:size-6">{Trend}</div>
             <p className="font-satoshi font-medium text-[11px] xl:text-[16px] text-primary">
@@ -556,3 +609,11 @@ function Cart({
     </div>
   );
 }
+
+const StateDataList: StateDataType[] = [
+  { type: "Instagram Followers", likes: "46.8K", percent: "32.7%" },
+  { type: "Instagram Likes", likes: "50.2K", percent: "28.1%" },
+  { type: "Instagram Comments", likes: "39.4K", percent: "41.2%" },
+  { type: "Instagram Shares", likes: "60.1K", percent: "22.5%" },
+  { type: "Instagram Views", likes: "55.7K", percent: "35.9%" },
+];

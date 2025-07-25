@@ -28,13 +28,16 @@ export default function Footer() {
           <div className="font-satoshi font-normal text-[16px] leading-[18px] text-white">
             © SocialPlug 2025. All rights reserved.
           </div>
+          {/* <div className="bg-[#2B2B2B] rounded-[6px] p-1"> */}
           <Image
-            width={316}
-            height={24}
-            src="https://cdn.prod.website-files.com/628d4467de238a5806753c9b/66292d46e99717b0f56ae2a2_payment-icons-24.svg"
+            width={360}
+            height={32}
+            src="/img/payments_3.svg"
             alt="payments methods"
             priority={false}
+            className="w-[360px] h-[32px]"
           />
+          {/* </div> */}
         </div>
       </div>
     </section>

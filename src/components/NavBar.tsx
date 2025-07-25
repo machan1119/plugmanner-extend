@@ -54,6 +54,13 @@ export default function NavBar() {
         </div>
         <div className="absolute inset-0 pointer-events-none">
           <Image
+            src="/img/navbar_dot.png"
+            width={622}
+            height={69}
+            alt="Navbar dot background"
+            className="m-auto dot-mask-header"
+          />
+          <Image
             width={150}
             height={150}
             alt="navbar_left"

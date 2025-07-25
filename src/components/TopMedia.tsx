@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 const TopMediaImgURLs = [
-  "/img/media_img_1.png",
-  "/img/media_img_2.png",
-  "/img/media_img_3.png",
-  "/img/media_img_4.png",
-  "/img/media_img_5.png",
-  "/img/media_img_6.png",
+  "/img/media_img_1.svg",
+  "/img/media_img_2.svg",
+  "/img/media_img_3.svg",
+  "/img/media_img_4.svg",
+  "/img/media_img_5.svg",
+  "/img/media_img_6.svg",
 ];
 
 export default function TopMedia() {
@@ -59,14 +59,14 @@ export default function TopMedia() {
           <p className="font-satoshi font-medium text-[16px] md:text-[18px] xl:text-[20px] text-black/50 uppercase">
             Featured in Top Media
           </p>
-          <div className="hidden lg:flex justify-between gap-5 xl:gap-[52px] items-center">
+          <div className="hidden h-[28px] lg:flex justify-between gap-5 xl:gap-[52px] items-center">
             {TopMediaImgURLs.map((item, index) => (
               <Image
                 src={item}
                 width={175}
                 height={28}
                 alt="top_media_img"
-                className="xl:size-full size-[40%]"
+                className="lg:size-full"
                 key={index}
               />
             ))}
@@ -77,8 +77,8 @@ export default function TopMedia() {
                 <div className="h-[20px]" key={index}>
                   <Image
                     src={item}
-                    width={175}
-                    height={28}
+                    width={140}
+                    height={20}
                     alt="top_media_img"
                     className="size-full"
                   />
@@ -90,8 +90,8 @@ export default function TopMedia() {
                 <div className="h-[20px]" key={index}>
                   <Image
                     src={item}
-                    width={175}
-                    height={28}
+                    width={140}
+                    height={20}
                     alt="top_media_img"
                     className="size-full"
                   />
