@@ -35,11 +35,11 @@ body {
     text-wrap: balance;
   }
   .font-h1 {
-    @apply font-clash font-semibold text-[20px] leading-[22px] sm:text-[24px] sm:leading-[26px] md:text-[32px] md:leading-[36px] lg:text-[40px] lg:leading-[44px] xl:text-[48px] xl:leading-[52px] text-black text-center md:text-start;
+    @apply font-clash font-semibold text-[24px] leading-[26px] md:text-[32px] md:leading-[36px] lg:text-[40px] lg:leading-[44px] xl:text-[48px] xl:leading-[52px] text-black text-center md:text-start;
   }
   
   .font-h2 {
-    @apply font-clash font-semibold text-[18px] leading-[22px] sm:text-[20px] sm:leading-[25px] md:text-[24px] md:leading-[28px] lg:text-[28px] lg:leading-[32px] xl:text-[32px] xl:leading-[39px] text-black;
+    @apply font-clash font-semibold text-[20px] leading-[25px] md:text-[24px] md:leading-[28px] lg:text-[28px] lg:leading-[32px] xl:text-[32px] xl:leading-[39px] text-black;
   }
 
 }
@@ -87,56 +87,20 @@ body {
   height: max-content !important;
 }
 
-/* .custom-swiper-button-prev {
-  width: 41px;
-  height: 41px;
-  left: 47px;
-  top: calc(50% - 41px/2 - 46px);
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(4px);
-  border-radius: 41px;
-  transform: matrix(-1, 0, 0, 1, 0, 0);
-}
 
-.custom-swiper-button-next {
-  width: 41px;
-  height: 41px;
-  left: 590px;
-  top: calc(50% - 41px/2 - 46px);
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(4px);
-  border-radius: 41px;
-} */
-/* Swiper */
-
-.slider-top_1 {
-  animation: marquee-mobile_1 8s infinite linear;
-  overflow: hidden;
-  -webkit-box-pack: start;
-}
-
-@keyframes marquee-mobile_1 {
-  0%  {
-    right: -100px;
-  }
-  
-  100% {
-    right: calc(100vw + 200px);
-  }
-}
-
-
-.slider-top_2 {
-  animation: marquee-mobile_2 8s infinite linear;
-  overflow: hidden;
-  -webkit-box-pack: start;
-}
-
-@keyframes marquee-mobile_2 {
-  0%  {
-    right: -300px;
+@keyframes slider-marquee {
+  0% {
+    transform: translateX(0);
   }
   100% {
-    right: calc(100vw);
+    transform: translateX(-50%);
   }
+}
+
+.slider-marquee {
+  will-change: transform;
+}
+
+.animate-slider-marquee {
+  animation: slider-marquee 14s linear infinite;
 }

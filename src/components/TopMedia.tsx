@@ -1,20 +1,12 @@
 import Image from "next/image";
 
-const TopMediaImgURLs_1 = [
-  "/img/media_img_1.png",
-  "/img/media_img_2.png",
-  "/img/media_img_3.png",
-  "/img/media_img_4.png",
-  "/img/media_img_5.png",
-  "/img/media_img_6.png",
-];
-const TopMediaImgURLs_2 = [
-  "/img/media_img_7.png",
-  "/img/media_img_8.png",
-  "/img/media_img_9.png",
-  "/img/media_img_10.png",
-  "/img/media_img_11.png",
-  "/img/media_img_12.png",
+const TopMediaImgURLs = [
+  "/img/media_img_1.svg",
+  "/img/media_img_2.svg",
+  "/img/media_img_3.svg",
+  "/img/media_img_4.svg",
+  "/img/media_img_5.svg",
+  "/img/media_img_6.svg",
 ];
 
 export default function TopMedia() {
@@ -68,7 +60,7 @@ export default function TopMedia() {
             Featured in Top Media
           </p>
           <div className="hidden h-[28px] lg:flex justify-between gap-5 xl:gap-[52px] items-center">
-            {TopMediaImgURLs_2.map((item, index) => (
+            {TopMediaImgURLs.map((item, index) => (
               <Image
                 src={item}
                 width={175}
@@ -81,30 +73,28 @@ export default function TopMedia() {
           </div>
           <div className="lg:hidden flex flex-col gap-5">
             <div className="flex justify-between gap-5 items-center">
-              {TopMediaImgURLs_1.slice(0, 3).map((item, index) => (
+              {TopMediaImgURLs.slice(0, 3).map((item, index) => (
                 <div className="h-[20px]" key={index}>
-                  <img src={item} />
-                  {/* <Image
+                  <Image
                     src={item}
                     width={140}
                     height={20}
                     alt="top_media_img"
                     className="size-full"
-                  /> */}
+                  />
                 </div>
               ))}
             </div>
             <div className="flex justify-between gap-5 items-center">
-              {TopMediaImgURLs_1.slice(3, 6).map((item, index) => (
+              {TopMediaImgURLs.slice(3, 6).map((item, index) => (
                 <div className="h-[20px]" key={index}>
-                  <img src={item} />
-                  {/* <Image
+                  <Image
                     src={item}
                     width={140}
                     height={20}
                     alt="top_media_img"
                     className="size-full"
-                  /> */}
+                  />
                 </div>
               ))}
             </div>

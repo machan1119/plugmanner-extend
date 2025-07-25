@@ -167,11 +167,12 @@ function PricingCard({
           className="w-[287px] h-[20px]"
         /> */}
         <Image
-          src="/img/payments.svg"
+          src="/img/payments_4.svg"
           width={294}
           height={21}
+          priority
           alt="payment_methods"
-          className="w-[294px]"
+          className="h-[21px]"
         />
       </div>
     </div>
