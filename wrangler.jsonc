@@ -1,0 +1,8 @@
+{
+  "name": "plugmanner-extend",
+  "compatibility_date": "2025-07-30",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "pages_build_output_dir": ".vercel/output/static"
+}
